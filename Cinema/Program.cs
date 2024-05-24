@@ -22,14 +22,12 @@ namespace Cinema
             PrintMenu();
             String result = Console.ReadLine();
 
-            // byt till switch case
             switch (result)
             {
                 case MenuHelper.AddVisitor:
                     {
                         Person aperson = AddVisitor();
                         aperson.PrintToConsole();
-                        Console.ReadLine();
                         break;
                     }
                 case MenuHelper.AddGroup:
@@ -56,11 +54,11 @@ namespace Cinema
 
                 default:
                     Console.WriteLine("Unvalid choice");
-                    Console.ReadLine();
                     break;
 
             }
 
+            Console.ReadLine();
             return true;
 
 
@@ -71,6 +69,7 @@ namespace Cinema
 
             Console.Clear();
             // Todo implement IEnumerable for indexcounter GetEnumerator()
+            // Todo break out from the static main function 
             int i = 0;
             Console.Clear();
             foreach (string menuText in MenuHelper.MenuCollection2Print())
@@ -89,7 +88,6 @@ namespace Cinema
             inSentence = Console.ReadLine();
             string[] words = inSentence.Split(' ');
             Console.WriteLine("the third word is {0}", words[2]);
-            Console.ReadLine();
         }
 
         private static void RepeatSentence()
@@ -100,14 +98,13 @@ namespace Cinema
             inSentence = Console.ReadLine();
             for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine(inSentence);
+                Console.Write("{0} ",inSentence);
             }
-            Console.ReadLine();
+            Console.WriteLine();
         }
 
         private static Person AddVisitor()
         {
-            //string name = "";
             int age = 0;
 
             Console.Clear();
@@ -142,16 +139,15 @@ namespace Cinema
             Console.Clear();
             Console.WriteLine("Nr People: {0}", inPersonList.Count);
             Console.WriteLine("Total cost: {0}kr", sum);
-            Console.ReadLine();
         }
 
     }
 
     class Person
     {
+        //Todo break out to separate class file
         public int Age { get; set; }
 
-        //public Person() { }
         public Person(int inAge)
         {
             Age = inAge;
